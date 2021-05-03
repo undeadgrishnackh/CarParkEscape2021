@@ -1,5 +1,5 @@
 {
-  "name": "template-nodejs",
+  "name": "CarParkEscape2021",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -22,14 +22,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/undeadgrishnackh/template-nodejs.git"
+    "url": "git+https://github.com/undeadgrishnackh/CarParkEscape2021.git"
   },
   "author": "undeadgrishnackh",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/undeadgrishnackh/template-nodejs/issues"
+    "url": "https://github.com/undeadgrishnackh/CarParkEscape2021/issues"
   },
-  "homepage": "https://github.com/undeadgrishnackh/template-nodejs#readme",
+  "homepage": "https://github.com/undeadgrishnackh/CarParkEscape2021#readme",
   "dependencies": {},
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
