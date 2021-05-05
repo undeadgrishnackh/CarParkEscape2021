@@ -8,3 +8,44 @@
 
 🚧 CodeScene must be configured to scan the repository. Click the badge...
 [![CodeScene System Mastery](https://codescene.io/projects/7748/status-badges/system-mastery)](https://codescene.io/projects/7748)
+
+---
+
+# Car Park Escape 2021
+## XPFarm yellow belt
+
+Kata source: https://www.codewars.com/kata/591eab1d192fe0435e000014
+
+# User Stories Decomposition
+## US1 - the grocery store parking
+UAT 1: >> E2E 🤷‍♂️ => '~BDD'
+1. the parking lot is **FLAT** (_1 spot on 1 floor_)
+2. the car is parked inside it (_in the unique parking slot_)
+3. the exit is on the extreme RIGHT (_spot 1_)
+4. so => *expect an "R0"* as the result.
+
+UAT 2: >> E2E 🤷‍♂️ => '~BDD'
+1. the parking lot is **FLAT** (_6 spots on 1 floor_)
+2. the car is parked inside it (_in the extreme left_)
+3. the exit is on the extreme RIGHT (_spot 6_)
+4. so => *expect an "R5"* as the result.
+
+
+---
+## TDD/ATDD Double loop approach.
+### Scenario 1: 
+#### 1' loop BDD: 
+GIVEN a flat parking of 1 slot
+WHEN I park there
+THEN I get R0 as the fastest path to the exit.
+
+#### 2' loop UnitTest+:
+
+
+
+### Scenario 2:
+GIVEN a flat parking of 6 slots
+WHEN I park in the extreme left
+THEN I get R5 as the fastest path to the exit.
+
+#### 2' loop UnitTest+:
