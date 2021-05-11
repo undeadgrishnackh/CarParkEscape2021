@@ -8,3 +8,17 @@
 
 🚧 CodeScene must be configured to scan the repository. Click the badge...
 [![CodeScene System Mastery](https://codescene.io/projects/7748/status-badges/system-mastery)](https://codescene.io/projects/7748)
+
+# US1 - Flat grocery store park
+## E2E:
+**Given** "[2,0,0,0,0,0]" as input
+**When** I ask for the shortest path to the exit
+**Then** I received "R5"
+
+## Unit tests behavioral flow
+1. check the input
+  - reject not array
+  - reject empty array
+  - reject parking without my car parked there
+2. find your car
+3. guide me to the exit

@@ -1,4 +1,4 @@
-class CarPark {
+/* class CarPark {
   floors;
 
   spot;
@@ -10,5 +10,21 @@ class CarPark {
     this.spot = spotToOccupy;
     this.exit = 2;
   }
+} */
+
+function isMyCarPresent(parkingLot) {
+  // for (let i = 0; i < parkingLot.length; i++) {
+  //   if (parkingLot[i] === 2) {
+  //     return true;
+  //   }
+  // }
+  return false;
 }
-module.exports = CarPark;
+
+function Carpark(parkingLot) {
+  if (!Array.isArray(parkingLot) || parkingLot.length === 0 || !isMyCarPresent(parkingLot)) {
+    return 'error';
+  }
+}
+
+module.exports = { Carpark };
