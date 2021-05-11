@@ -47,3 +47,14 @@ Unit:
 3. car === 2
 4. no stairs on floor 0
 5.my car must be in the parking
+
+### US1 -
+--- Desc
+as a driver
+i want to have a direction to the exit from a flat parking space with 6 slots
+so that i can escape on the shortest route
+
+--- UAT
+Given a flat parking space
+when finding the exit
+then 
