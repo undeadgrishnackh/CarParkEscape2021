@@ -23,7 +23,7 @@ UAT 1: >> E2E 🤷‍♂️ => '~BDD'
 2. the car is parked inside it (_in the unique parking slot_)
 3. the exit is on the extreme RIGHT (_spot 1_)
 4. so => *expect an "R0"* as the result.
-
+a
 UAT 2: >> E2E 🤷‍♂️ => '~BDD'
 1. the parking lot is **FLAT** (_6 spots on 1 floor_)
 2. the car is parked inside it (_in the extreme left_)
@@ -33,19 +33,18 @@ UAT 2: >> E2E 🤷‍♂️ => '~BDD'
 
 ---
 ## TDD/ATDD Double loop approach.
-### Scenario 1: 
-#### 1' loop BDD: 
-GIVEN a flat parking of 1 slot
-WHEN I park there
-THEN I get R0 as the fastest path to the exit.
+### Scenario 1:
+GIVEN [2,0,0,0,0,0] as input
+WHEN I request the shortest path to the exit
+THEN I receive "R5".
 
 #### 2' loop UnitTest+:
-
-
-
-### Scenario 2:
-GIVEN a flat parking of 6 slots
-WHEN I park in the extreme left
-THEN I get R5 as the fastest path to the exit.
-
-#### 2' loop UnitTest+:
+1. Am I in a parking lot?
+ . Is an array
+ . Is not empty array
+ . are cars parked in
+2. Where is my car?
+ . find my car slot as 2 into the array
+3. Move to the exit
+ . move to the RIGHT
+ . move multiple steps

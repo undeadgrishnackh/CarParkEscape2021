@@ -10,7 +10,26 @@ const rejectIncorrectParkingLot = (parkingLot) => {
 
 class CarParkEscape {
   constructor(parkingLot) {
+    this.parkingLot = parkingLot;
     rejectIncorrectParkingLot(parkingLot);
+  }
+
+  carPosition() {
+    return this.parkingLot.indexOf(2);
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  getExitDirection() {
+    return 'R';
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  getStepsToExit() {
+    return '5';
+  }
+
+  shortestPathToExit() {
+    return `${this.getExitDirection()}${this.getStepsToExit()}`;
   }
 }
 
