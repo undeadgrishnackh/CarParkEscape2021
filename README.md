@@ -16,7 +16,8 @@
 
 Kata source: https://www.codewars.com/kata/591eab1d192fe0435e000014
 
-# User Stories Decomposition
+# User Stories Decomposition - 1' attempt
+>>> user centric but development disconnected
 ## US1 - the grocery store parking
 UAT 1: >> E2E 🤷‍♂️ => '~BDD'
 1. the parking lot is **FLAT** (_1 spot on 1 floor_)
@@ -32,19 +33,43 @@ UAT 2: >> E2E 🤷‍♂️ => '~BDD'
 
 
 ---
-## TDD/ATDD Double loop approach.
-### Scenario 1:
+# User Stories Decomposition - 2' attempt
+>>> user story creation with ATDD refinement
+>>> TDD/ATDD Double loop approach.
+## US 1 - the flat grocery store parking.
+AS a driver that parked in a grocery store parking
+I NEED to understand which is the path to the exit
+SO THAT I'll be able to escape it ASAP.
+
+### UAT 1: ✅
 GIVEN [2,0,0,0,0,0] as input
 WHEN I request the shortest path to the exit
 THEN I receive "R5".
-
-#### 2' loop UnitTest+:
-1. Am I in a parking lot?
- . Is an array
- . Is not empty array
- . are cars parked in
+#### UnitTests (2' coding miniloops):
+1. Am I in a parking lot? 
+ . ✅ Is an array
+ . ✅ Is not empty array
+ . ✅ are cars parked in
 2. Where is my car?
- . find my car slot as 2 into the array
+ . ✅ find my car slot as 2 into the array
 3. Move to the exit
- . move to the RIGHT
- . move multiple steps
+ . ✅ move to the RIGHT
+ . ✅ move multiple steps
+
+
+### UAT 2: ✅
+GIVEN [0,2,0,0,0,0] as input
+WHEN I request the shortest path to the exit
+THEN I receive "R4".
+#### Unit Tests (2' coding miniloops):
+1. ✅ create the multi steps algorithm (move 4 steps)
+
+---
+
+# US2: 2 floor parking
+AS a driver that parked in a 2 floors parking
+I NEED to find the stairs
+SO THAT I'll be able to find the exit ASAP.
+
+✅
+🚧

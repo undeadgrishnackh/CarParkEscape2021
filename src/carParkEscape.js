@@ -11,6 +11,8 @@ const rejectIncorrectParkingLot = (parkingLot) => {
 class CarParkEscape {
   constructor(parkingLot) {
     this.parkingLot = parkingLot;
+    this.parkingLotSize = this.getParkingLotSize();
+    this.right = 'R';
     rejectIncorrectParkingLot(parkingLot);
   }
 
@@ -18,14 +20,17 @@ class CarParkEscape {
     return this.parkingLot.indexOf(2);
   }
 
-  // eslint-disable-next-line class-methods-use-this
   getExitDirection() {
-    return 'R';
+    return this.right;
   }
 
-  // eslint-disable-next-line class-methods-use-this
+  getParkingLotSize() {
+    return this.parkingLot.length - 1;
+  }
+
   getStepsToExit() {
-    return '5';
+    const stepsToExit = this.parkingLotSize - this.carPosition();
+    return stepsToExit.toString();
   }
 
   shortestPathToExit() {
