@@ -1,11 +1,8 @@
-const carPark = (n, m) => {
-  // if (typeof(m) == "Number"){
-  //     return true;
-  // }
-  // if (typeof(n) == "Array"){
-  //     return true;
-  // }
-  // return 'ERROR'
+const carPark = (building) => {
+  if (building === undefined) {
+    return 'ERROR';
+  }
+  return building;
 };
 
 module.exports = carPark;

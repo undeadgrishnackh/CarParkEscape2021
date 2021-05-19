@@ -46,7 +46,13 @@ Unit:
 2. empty slot === 0
 3. car === 2
 4. no stairs on floor 0
-5.my car must be in the parking
+5. my car must be in the parking
+
+>>> code behaviors
+>> 1. guardians
+>> 2. flat building
+>> 3. moving to the right
+>> 4. moving multiple steps
 
 ### US1 -
 --- Desc
@@ -58,3 +64,26 @@ so that i can escape on the shortest route
 Given a flat parking space
 when finding the exit
 then 
+
+### US2 - As a driver i want to find the ideal route in a two floor parking space with the stairs on the right so that i can escape by only moving to the right and then down 1 floor
+
+-   Given two dimensional array (items representing the parking floor, with 5 slots on each floor
+    1 indicating the stair, 2 the car position, and 0 empty slots), with stair above exit
+    example input `[[2,0,0,0,1],[0,0,0,0,0]]`
+-   When calculating escape route
+-   Then the output should be an array of strings\
+    first item: move to far right - `Rx` - x being the number of slots the car needs to move for the stair\
+    second item: `D1` \
+    example output `['R4', 'D1']`
+
+>>> code behaviors
+>> 1. guardians ?? multiple array ??
+>> 2. multi floors building
+>> 3. moving to the right ?? LEFT ??
+>> 4. looking for the staircase
+>> 5. moving DOWN
+
+
+## TechDebt
+- Guardian should check the first item in the argument includes a car
+- Check whether it is a 5 slots length
