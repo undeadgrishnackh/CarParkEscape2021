@@ -36,4 +36,20 @@ describe('Unit tests behavioral flow', () => {
       expect(Carpark(parkingLot)).toEqual(errorMessage);
     });
   });
+  describe('find my car in the parking lot', () => {
+    it('find my car in parking lot with 1 floor', () => {
+      const parkingLot = [0, 2, 0];
+      const position = 1;
+
+      expect(Carpark(parkingLot)).toEqual(position);
+    });
+  });
+  describe('find our route to the exit', () => {
+    it('find our route to the exit in parking lot with 1 floor', () => {
+      const parkingLot = [0, 2, 0];
+      const exitToRoute = ['R1'];
+
+      expect(Carpark(parkingLot)).toEqual(exitToRoute);
+    });
+  });
 });
