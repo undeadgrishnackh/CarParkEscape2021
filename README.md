@@ -17,7 +17,7 @@
 Kata source: https://www.codewars.com/kata/591eab1d192fe0435e000014
 
 # User Stories Decomposition - 1' attempt
->>> user centric but development disconnected
+>>> user-centric but still disconnected from the development flow
 ## US1 - the grocery store parking
 UAT 1: >> E2E 🤷‍♂️ => '~BDD'
 1. the parking lot is **FLAT** (_1 spot on 1 floor_)
@@ -35,7 +35,7 @@ UAT 2: >> E2E 🤷‍♂️ => '~BDD'
 ---
 # User Stories Decomposition - 2' attempt
 >>> user story creation with ATDD refinement
->>> TDD/ATDD Double loop approach.
+>>> TDD/ATDD Double loops approach.
 ## US 1 - the flat grocery store parking.
 AS a driver that parked in a grocery store parking
 I NEED to understand which is the path to the exit
@@ -47,29 +47,77 @@ WHEN I request the shortest path to the exit
 THEN I receive "R5".
 #### UnitTests (2' coding miniloops):
 1. Am I in a parking lot? 
- . ✅ Is an array
- . ✅ Is not empty array
- . ✅ are cars parked in
+ . ✅ Is an array?
+ . ✅ Is not empty array?
+ . ✅ are cars parked in?
 2. Where is my car?
- . ✅ find my car slot as 2 into the array
+ . ✅ find my car slot as 2 into the array (spot number)
 3. Move to the exit
  . ✅ move to the RIGHT
  . ✅ move multiple steps
-
 
 ### UAT 2: ✅
 GIVEN [0,2,0,0,0,0] as input
 WHEN I request the shortest path to the exit
 THEN I receive "R4".
-#### Unit Tests (2' coding miniloops):
-1. ✅ create the multi steps algorithm (move 4 steps)
+#### Unit Tests (2' coding mini lops):
+1. ✅ create the multi-steps algorithm (move 4 steps)
 
 ---
 
-# US2: 2 floor parking
-AS a driver that parked in a 2 floors parking
+# US2: 2-floors parking
+AS a driver that parked in a 2-floors parking
 I NEED to find the stairs
 SO THAT I'll be able to find the exit ASAP.
+
+### UAT 4: parking on the ground floor 😌
+GIVEN [[0,0,0,0,0,1],[0,2,0,0,0,0]] as the parking lot
+WHEN I request the shortest path to the exit
+THEN I receive "[R4]".
+
+#### unit test mini-loops:
+1. is a 2 floors parking?
+ - reject everhing else than {0,1,2}
+ - after 1' floor must be a stairs case
+ - input is a multidimension array [[],[]]
+2. in which floor is my car?
+ - floor number
+ - parking slot or spot ✅ in previous US but must change in a tupla (floor, spot)
+
+### UAT 1: stairs on the extreme RIGHT side
+GIVEN [[0,0,2,0,0,1],[0,0,0,0,0,0]] as the parking lot
+WHEN I request the shortest path to the exit
+THEN I receive "[R3,D1]".
+
+### UAT 3: stairs on the immediate RIGHT
+GIVEN [[0,0,2,1,0,0],[0,0,0,0,0,0]] as the parking lot
+WHEN I request the shortest path to the exit
+THEN I receive "[R1,D1,R2]".
+
+### UAT 2: stairs on the extreme LEFT side 😖
+GIVEN [[1,0,2,0,0,0],[0,0,0,0,0,0]] as the parking lot
+WHEN I request the shortest path to the exit
+THEN I receive "[L2,D1,R5]".
+
+
+--- 
+>>> Decide where to put these behaviours into your UATs...
+#### unit-tests user behaviors & logic:
+> 1. is a 2 floors parking?
+>  - reject everhing else than {0,1,2}
+>  - after 1' floor must be a stairs case
+>  - input is a multidimension array [[],[]]
+> 2. in which floor is my car?
+>  - floor number
+>  - parking slot or spot ✅ in previous US but must change in a tupla (floor, spot)
+3. where are the stairs?
+  - on the RIGHT
+  - on the LEFT
+4. move to the exit...
+ - move RIGHT ✅ in previous US
+ - move DOWN
+ - move LEFT
+
 
 ✅
 🚧

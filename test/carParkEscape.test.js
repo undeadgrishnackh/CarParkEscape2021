@@ -62,3 +62,31 @@ describe('US1 - Flat Gocrey store parking.', () => {
     });
   });
 });
+
+describe('US2: 2-floors parking', () => {
+  describe('UAT 4: parking on the ground floor', () => {
+    describe('GIVEN [[0,0,0,0,0,1],[0,2,0,0,0,0]] as the parking lot', () => {
+      describe('WHEN I request the shortest path to the exit', () => {
+        describe('is a 2 floors parking?', () => {
+          test('should throw an error if not a 2 dimensional array', () => {
+            expect(() => new CarParkEscape([[2], 'blah'])).toThrow('ERR');
+          });
+
+          test('should throw an error if not a 2 dimensional array of arrays', () => {
+            expect(() => new CarParkEscape(['blah', [2]])).toThrow('ERR');
+          });
+          test('should reject everything other than 0, 1, 2', () => {
+            // reject everhing else than {0,1,2}
+            expect(
+              () =>
+                new CarParkEscape([
+                  [2, 0, 1],
+                  [3, 0, 0],
+                ])
+            ).toThrow('ERR');
+          });
+        });
+      });
+    });
+  });
+});

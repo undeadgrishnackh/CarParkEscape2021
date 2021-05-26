@@ -8,12 +8,23 @@ const rejectIncorrectParkingLot = (parkingLot) => {
   }
 };
 
+const rejectIncorrectMulitLevelParkingLot = (parkingLot) => {
+  if (!isArray(parkingLot) || !parkingLot.every((value) => isArray(value))) {
+    throw Error('ERR');
+  }
+};
+
 class CarParkEscape {
   constructor(parkingLot) {
     this.parkingLot = parkingLot;
     this.parkingLotSize = this.getParkingLotSize();
     this.right = 'R';
-    rejectIncorrectParkingLot(parkingLot);
+
+    if (!isArray(parkingLot) || !parkingLot.some((value) => isArray(value))) {
+      rejectIncorrectParkingLot(parkingLot);
+    } else {
+      rejectIncorrectMulitLevelParkingLot(parkingLot);
+    }
   }
 
   carPosition() {
