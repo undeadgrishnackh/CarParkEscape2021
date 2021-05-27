@@ -54,4 +54,13 @@ describe('US#2 - 2 floors Car Park', () => {
       expect(carParkEscape(twoFloorParking)).toBe('R4');
     });
   });
+  describe('Is this a multi floors parking?', () => {
+    test('accept multi floor parking like [[1, 0, 0, 0, 0, 0], [0, 2, 0, 0, 0, 0]]', () => {
+      const twoFloorParking = [
+        [1, 0, 0, 0, 0, 0],
+        [0, 2, 0, 0, 0, 0],
+      ];
+      expect(carParkEscape(twoFloorParking)).not.toBe('ERROR');
+    });
+  });
 });
