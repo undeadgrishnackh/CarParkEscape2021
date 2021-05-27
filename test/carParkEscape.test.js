@@ -1,4 +1,4 @@
-const Dummy = require('../src/dummy.js');
+const Dummy = require('../src/carParkEscape.js');
 
 describe('Something I wanna test...', () => {
   test('should be something to expect...', () => {
