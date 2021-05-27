@@ -30,4 +30,10 @@ describe('Car Park Escape', () => {
       expect(carParkEscape(parkedOnSlot1)).toBe(6);
     });
   });
+  describe('Move to the exit', () => {
+    test('should move to the RIGHT', () => {
+      const parkedOnSlot1 = [2, 0, 0, 0, 0, 0];
+      expect(carParkEscape(parkedOnSlot1)).toBe('R');
+    });
+  });
 });

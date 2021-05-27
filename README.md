@@ -33,7 +33,7 @@ The parking escape kata description is (https://www.codewars.com/kata/591eab1d19
  - ✅ are cars parked in
 
 2. Where is my car? 
- - find my car into the parking
+ - ✅ find my car into the parking
 
 3. Move to the exit... 
  - move to the RIGHT 
