@@ -1,7 +1,7 @@
 const { carParkEscape, inWhichParkingSlotIsMyCar } = require('../src/carParkEscape.js');
 
 describe('US#1 - Flat Car Park', () => {
-  describe('Given 🚘 🅿️ 🅿️ 🅿️ 🅿️ 🅿️  as a Flat car park', () => {
+  describe('GIVEN 🚘 🅿️ 🅿️ 🅿️ 🅿️ 🅿️  as a Flat car park', () => {
     test('WHEN I request the shortest path to the exit, THEN I receive "R5"', () => {
       const FlatParking = [['🚘', 0, 0, 0, 0, 0]];
       expect(carParkEscape(FlatParking)).toBe('R5');
@@ -53,75 +53,84 @@ describe('US#1 - Flat Car Park', () => {
 });
 
 describe('US#2 - 2 floors Car Park', () => {
-  describe('UAT1: Given "[[1,0,0,0,0,0],[0,2,0,0,0,0]]" as a 2 floors parking', () => {
-    test('I ask to find the shortest path to the exit, Then I receive "R4" ', () => {
+  describe('UAT1: GIVEN "[[⬇️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️],[🅿️ 🚘 🅿️ 🅿️ 🅿️ 🅿️ ]]" as a 2 floors parking', () => {
+    test('WHEN I ask to find the shortest path to the exit, THEN I receive "R4" ', () => {
       const twoFloorParking = [
         [1, 0, 0, 0, 0, 0],
         [0, '🚘', 0, 0, 0, 0],
       ];
       expect(carParkEscape(twoFloorParking)).toBe('R4');
     });
-  });
-  describe('Is this a multi floors parking?', () => {
-    const buildingWithoutParkingSlots = [[], []];
-    const oneFloorWithoutParking = [[], [1, 0, 0, 0, 0]];
-    const parkedOnFlatParking = [[0, 0, 0, 0, 0, '🚘']];
-    const parkedOnTheGroundFloor = [
-      [1, 0, 0, 0, 0, 0],
-      [0, '🚘', 0, 0, 0, 0],
-    ];
-    const parkedOnTheFirstFloor = [
-      [1, 0, 0, '🚘', 0, 0],
-      [0, 0, 0, 0, 0, 0],
-    ];
-    const buildingWithStairsOnGroundFloor = [
-      [0, 0, 0, 0, 0, 0],
-      [1, 0, 0, '🚘', 0, 0],
-    ];
-    const buildingWithoutStairsOtTheFirstFloor = [
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, '🚘', 0, 0],
-    ];
-    test('should reject multi floor parking without parking slots - [[], []]', () => {
-      expect(carParkEscape(buildingWithoutParkingSlots)).toBe('ERROR');
-    });
-    test('should reject a parking with an empty floor - [[], [1, 0, 0, 0, 0]]', () => {
-      expect(carParkEscape(oneFloorWithoutParking)).toBe('ERROR');
-    });
-    test('should accept a building with a flat parking (only one floor) - [[🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🚘]]', () => {
-      expect(carParkEscape(parkedOnFlatParking)).not.toBe('ERROR');
-    });
-    test('shouold accept my car parked on the ground floor - [[⬇️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ],[🚘 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ]]', () => {
-      expect(carParkEscape(parkedOnTheGroundFloor)).not.toBe('ERROR');
-    });
-    test('should accept my car parked on the first floor - [[⬇️ 🅿️ 🅿️ 🚘 🅿️ 🅿️ ],[🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ]]', () => {
-      expect(carParkEscape(parkedOnTheFirstFloor)).not.toBe('ERROR');
-    });
-    test('should reject a building with staircase at ground floor - [[🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ],[⬇️ 🅿️ 🅿️ 🚘 🅿️ 🅿️ ]]', () => {
-      expect(carParkEscape(buildingWithStairsOnGroundFloor)).toBe('ERROR');
-    });
-    test('should reject a building without staircase at first floor - [[🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ],[🅿️ 🅿️ 🅿️ 🚘 🅿️ 🅿️ ]]', () => {
-      expect(carParkEscape(buildingWithoutStairsOtTheFirstFloor)).toBe('ERROR');
-    });
-  });
-  describe('Where is my car? In which floor and parking slot have I parked? 🤔', () => {
-    test('should return floor 0, slot 2 for [[⬇️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ],[🚘 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ]]', () => {
-      const parkedOnSlot1Floor0 = [
+    describe('Is this a multi floors parking?', () => {
+      const buildingWithoutParkingSlots = [[], []];
+      const oneFloorWithoutParking = [[], [1, 0, 0, 0, 0]];
+      const parkedOnFlatParking = [[0, 0, 0, 0, 0, '🚘']];
+      const parkedOnTheGroundFloor = [
         [1, 0, 0, 0, 0, 0],
         [0, '🚘', 0, 0, 0, 0],
       ];
-      const parkedOn = inWhichParkingSlotIsMyCar(parkedOnSlot1Floor0);
-      expect(parkedOn.floor.floorNumber).toBe(0);
-      expect(parkedOn.slot).toBe(2);
-    });
-    test('should return floor 1, slot 3 for [[⬇️ 🅿️ 🚘 🅿️ 🅿️ 🅿️ ],[ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ]]', () => {
-      const parkedOnSlot1Floor0 = [
-        [1, 0, '🚘', 0, 0, 0],
+      const parkedOnTheFirstFloor = [
+        [1, 0, 0, '🚘', 0, 0],
         [0, 0, 0, 0, 0, 0],
       ];
-      const parkedOn = inWhichParkingSlotIsMyCar(parkedOnSlot1Floor0);
-      expect(parkedOn.floor.floorNumber).toBe(1);
-      expect(parkedOn.slot).toBe(3);
+      const buildingWithStairsOnGroundFloor = [
+        [0, 0, 0, 0, 0, 0],
+        [1, 0, 0, '🚘', 0, 0],
+      ];
+      const buildingWithoutStairsOtTheFirstFloor = [
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, '🚘', 0, 0],
+      ];
+      test('should reject multi floor parking without parking slots - [[], []]', () => {
+        expect(carParkEscape(buildingWithoutParkingSlots)).toBe('ERROR');
+      });
+      test('should reject a parking with an empty floor - [[], [1, 0, 0, 0, 0]]', () => {
+        expect(carParkEscape(oneFloorWithoutParking)).toBe('ERROR');
+      });
+      test('should accept a building with a flat parking (only one floor) - [[🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🚘]]', () => {
+        expect(carParkEscape(parkedOnFlatParking)).not.toBe('ERROR');
+      });
+      test('shouold accept my car parked on the ground floor - [[⬇️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ],[🚘 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ]]', () => {
+        expect(carParkEscape(parkedOnTheGroundFloor)).not.toBe('ERROR');
+      });
+      test('should accept my car parked on the first floor - [[⬇️ 🅿️ 🅿️ 🚘 🅿️ 🅿️ ],[🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ]]', () => {
+        expect(carParkEscape(parkedOnTheFirstFloor)).not.toBe('ERROR');
+      });
+      test('should reject a building with staircase at ground floor - [[🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ],[⬇️ 🅿️ 🅿️ 🚘 🅿️ 🅿️ ]]', () => {
+        expect(carParkEscape(buildingWithStairsOnGroundFloor)).toBe('ERROR');
+      });
+      test('should reject a building without staircase at first floor - [[🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ],[🅿️ 🅿️ 🅿️ 🚘 🅿️ 🅿️ ]]', () => {
+        expect(carParkEscape(buildingWithoutStairsOtTheFirstFloor)).toBe('ERROR');
+      });
+    });
+    describe('Where is my car? In which floor and parking slot have I parked? 🤔', () => {
+      test('should return floor 0, slot 2 for [[⬇️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ],[🅿️ 🚘 🅿️ 🅿️ 🅿️ 🅿️ ]]', () => {
+        const parkedOnSlot1Floor0 = [
+          [1, 0, 0, 0, 0, 0],
+          [0, '🚘', 0, 0, 0, 0],
+        ];
+        const parkedOn = inWhichParkingSlotIsMyCar(parkedOnSlot1Floor0);
+        expect(parkedOn.floor.floorNumber).toBe(0);
+        expect(parkedOn.slot).toBe(2);
+      });
+      test('should return floor 1, slot 3 for [[⬇️ 🅿️ 🚘 🅿️ 🅿️ 🅿️ ],[ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ]]', () => {
+        const parkedOnSlot1Floor0 = [
+          [1, 0, '🚘', 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ];
+        const parkedOn = inWhichParkingSlotIsMyCar(parkedOnSlot1Floor0);
+        expect(parkedOn.floor.floorNumber).toBe(1);
+        expect(parkedOn.slot).toBe(3);
+      });
+    });
+  });
+  describe('UAT2: GIVEN "[[🅿️ 🅿️ 🚘 🅿️ 🅿️ ⬇️],[🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ]]" as a 2 floors parking', () => {
+    test('WHEN I ask to find the shortest path to the exit, THEN I receive "R3,D1" ', () => {
+      const twoFloorParking = [
+        [0, 0, '🚘', 0, 0, 1],
+        [0, 0, 0, 0, 0, 0],
+      ];
+      expect(carParkEscape(twoFloorParking)).toBe('[R3,D1]');
     });
   });
 });
