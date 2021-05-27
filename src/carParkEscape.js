@@ -17,11 +17,16 @@ const isntProperParkingBuilding = (building) =>
 const isInvalidParking = (building) =>
   isntProperParkingBuilding(building) || isAnEmptyParking(building) || myCarIsntThere(building);
 
-const inWhichParkingSlotIsMyCar = (building) => building[0].indexOf(MY_CAR) + 1;
+const inWhichParkingSlotIsMyCar = (building) => {
+  const position = {};
+  position.slot = building[0].indexOf(MY_CAR) + 1;
+  position.floor = 0;
+  return position;
+};
 const moveToTheExit = (building) => {
   const direction = MOVE_RIGHT;
   const parkingSize = building[0].length;
-  const steps = parkingSize - inWhichParkingSlotIsMyCar(building);
+  const steps = parkingSize - inWhichParkingSlotIsMyCar(building).slot;
   return direction.concat(steps);
 };
 

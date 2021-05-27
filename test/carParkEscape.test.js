@@ -30,11 +30,11 @@ describe('US#1 - Flat Car Park', () => {
     describe('Where is my car?', () => {
       test('should return parking #1 for 🚘 🅿️ 🅿️ 🅿️ 🅿️ 🅿️', () => {
         const parkedOnSlot1 = [['🚘', 0, 0, 0, 0, 0]];
-        expect(inWhichParkingSlotIsMyCar(parkedOnSlot1)).toBe(1);
+        expect(inWhichParkingSlotIsMyCar(parkedOnSlot1).slot).toBe(1);
       });
       test('should return parking #6 for 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🚘', () => {
         const parkedOnSlot6 = [[0, 0, 0, 0, 0, '🚘']];
-        expect(inWhichParkingSlotIsMyCar(parkedOnSlot6)).toBe(6);
+        expect(inWhichParkingSlotIsMyCar(parkedOnSlot6).slot).toBe(6);
       });
     });
     describe('Move to the exit', () => {
