@@ -25,7 +25,7 @@ describe('Car Park Escape', () => {
       const parkedOnSlot1 = [2, 0, 0, 0, 0, 0];
       expect(inWhichParkingSlotIsMyCar(parkedOnSlot1)).toBe(1);
     });
-    test('should return parking #2 for [0, 0, 0, 0, 0, 2]', () => {
+    test('should return parking #6 for [0, 0, 0, 0, 0, 2]', () => {
       const parkedOnSlot6 = [0, 0, 0, 0, 0, 2];
       expect(inWhichParkingSlotIsMyCar(parkedOnSlot6)).toBe(6);
     });
@@ -33,13 +33,13 @@ describe('Car Park Escape', () => {
   describe('Move to the exit', () => {
     test('should move to the RIGHT', () => {
       const parkedOnSlot1 = [2, 0, 0, 0, 0, 0];
-      expect(carParkEscape(parkedOnSlot1)).toBe('R');
+      expect(carParkEscape(parkedOnSlot1)).toContain('R');
     });
     test('should move multiple steps', () => {
       const parkedOnSlot1 = [2, 0, 0, 0, 0, 0];
-      expect(carParkEscape(parkedOnSlot1)).toBe('5');
+      expect(carParkEscape(parkedOnSlot1)).toContain('5');
     });
     const parkedOnSlot6 = [0, 0, 0, 0, 0, 2];
-    expect(carParkEscape(parkedOnSlot6)).toBe('0');
+    expect(carParkEscape(parkedOnSlot6)).toContain('0');
   });
 });
