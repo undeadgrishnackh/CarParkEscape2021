@@ -11,5 +11,9 @@ describe('Car Park Escape', () => {
     test("should retunr ERROR for 'invalid input'", () => {
       expect(carParkEscape('invalid input')).toBe('ERROR');
     });
+    test('should return ERROR for an empty array []', () => {
+      const emptyArray = [];
+      expect(carParkEscape(emptyArray)).toBe('ERROR');
+    });
   });
 });
