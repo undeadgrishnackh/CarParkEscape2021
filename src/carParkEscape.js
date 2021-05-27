@@ -1,5 +1,5 @@
 function carParkEscape(building) {
-  if (!Array.isArray(building)) return 'ERROR';
+  if (!Array.isArray(building) || building.length === 0) return 'ERROR';
   return undefined;
 }
 
