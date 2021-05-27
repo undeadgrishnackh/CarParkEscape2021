@@ -2,9 +2,11 @@ const MOVE_RIGHT = 'R';
 const MY_CAR = '🚘';
 const isntAnArray = (building) => !Array.isArray(building);
 const isEmpty = (building) => building.length === 0;
-const myCarIsntThere = (building) => building.indexOf(MY_CAR) === -1;
+const findMyCarOnThisFloor = (floor) => floor.includes(MY_CAR);
+const myCarIsntThere = (building) => building.some(findMyCarOnThisFloor);
 const isInvalidParking = (building) =>
   isntAnArray(building) || isEmpty(building) || myCarIsntThere(building);
+
 const inWhichParkingSlotIsMyCar = (building) => building.indexOf(MY_CAR) + 1;
 
 const moveToTheExit = (building) => {
