@@ -7,10 +7,13 @@ const isAnEmptyParking = (building) => building.length === 0;
 const isMyCarParkedOnSomeFloor = (floor) => floor.some((parking) => parking === MY_CAR);
 const myCarIsntThere = (building) => !building.some(isMyCarParkedOnSomeFloor);
 const areStaircasesOnGroundFloor = (building) => building[building.length - 1].includes(1);
+const arentStaircasesOnFirstFloor = (building) =>
+  building.length > 1 ? !building[0].includes(1) : false;
 const isntProperParkingBuilding = (building) =>
   isntTheBuildingIntoAnArray(building) ||
   isntTheGroundFloorIntoAnArray(building[0]) ||
-  areStaircasesOnGroundFloor(building);
+  areStaircasesOnGroundFloor(building) ||
+  arentStaircasesOnFirstFloor(building);
 const isInvalidParking = (building) =>
   isntProperParkingBuilding(building) || isAnEmptyParking(building) || myCarIsntThere(building);
 
