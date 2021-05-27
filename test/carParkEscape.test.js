@@ -78,6 +78,10 @@ describe('US#2 - 2 floors Car Park', () => {
       [0, 0, 0, 0, 0, 0],
       [1, 0, 0, '🚘', 0, 0],
     ];
+    const buildingWithoutStairsOtTheFirstFloor = [
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, '🚘', 0, 0],
+    ];
     test('should reject multi floor parking without parking slots - [[], []]', () => {
       expect(carParkEscape(buildingWithoutParkingSlots)).toBe('ERROR');
     });
@@ -95,6 +99,9 @@ describe('US#2 - 2 floors Car Park', () => {
     });
     test('should reject a building with staircase at ground floor - [[🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ],[⬇️ 🅿️ 🅿️ 🚘 🅿️ 🅿️ ]]', () => {
       expect(carParkEscape(buildingWithStairsOnGroundFloor)).toBe('ERROR');
+    });
+    test('should reject a building without staircase at first floor - [[🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ],[🅿️ 🅿️ 🅿️ 🚘 🅿️ 🅿️ ]]', () => {
+      expect(carParkEscape(buildingWithoutStairsOtTheFirstFloor)).toBe('ERROR');
     });
   });
 });
