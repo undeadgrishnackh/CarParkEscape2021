@@ -15,7 +15,7 @@ describe('US#1 - Flat Car Park', () => {
         expect(carParkEscape(emptyArray)).toBe('ERROR');
       });
       test("should return ERROR if my car isn't parked inside", () => {
-        const haventParkedInside = [0, 0, 0, 0, 0, 0];
+        const haventParkedInside = [[0, 0, 0, 0, 0, 0]];
         expect(carParkEscape(haventParkedInside)).toBe('ERROR');
       });
     });
