@@ -70,23 +70,27 @@ describe('US#2 - 2 floors Car Park', () => {
       [1, 0, 0, '🚘', 0, 0],
       [0, 0, 0, 0, 0, 0],
     ];
-    test('accept multi floor parking with my car on the first floor - [[], []]', () => {
-      expect(carParkEscape(parkedOnTheFirstFloor)).not.toBe('ERROR');
-    });
-    test('should reject a building without parking slots - [[], [1, 0, 0, 0, 0]]', () => {
+    const buildingWithStairsOnGroundFloor = [
+      [0, 0, 0, 0, 0, 0],
+      [1, 0, 0, '🚘', 0, 0],
+    ];
+    test('should reject multi floor parking without parking slots - [[], []]', () => {
       expect(carParkEscape(buildingWithoutParkingSlots)).toBe('ERROR');
     });
-    test('should reject a parking with an empty floor', () => {
+    test('should reject a parking with an empty floor - [[], [1, 0, 0, 0, 0]]', () => {
       expect(carParkEscape(oneFloorWithoutParking)).toBe('ERROR');
     });
     test('should accept a building with a flat parking (only one floor) - [[🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🚘]]', () => {
       expect(carParkEscape(parkedOnFlatParking)).not.toBe('ERROR');
     });
-    test('shouold accept my car parked on the ground floor - [ [⬇️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ], [🚘 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ]]', () => {
+    test('shouold accept my car parked on the ground floor - [[⬇️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ],[🚘 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ]]', () => {
       expect(carParkEscape(parkedOnTheGroundFloor)).not.toBe('ERROR');
     });
-    test('should accept my car parked on the first floor - [ [⬇️ 🅿️ 🅿️ 🚘 🅿️ 🅿️ ], [🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ]]', () => {
+    test('should accept my car parked on the first floor - [[⬇️ 🅿️ 🅿️ 🚘 🅿️ 🅿️ ],[🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ]]', () => {
       expect(carParkEscape(parkedOnTheFirstFloor)).not.toBe('ERROR');
+    });
+    test('should reject a building with staircase at ground floor - [[🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ],[⬇️ 🅿️ 🅿️ 🚘 🅿️ 🅿️ ]]', () => {
+      expect(carParkEscape(buildingWithStairsOnGroundFloor)).toBe('ERROR');
     });
   });
 });
