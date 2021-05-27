@@ -16,6 +16,7 @@ The parking escape kata description is (https://www.codewars.com/kata/591eab1d19
 - US2: a 2 floors parking
 - US3: a multi-level parking
 
+---
 # US1 - The flat grocery store parking ✅ 
 > AS a driver that parked in a grocery store parking \
 > I NEED to understand which is the path to the exit \
@@ -39,3 +40,38 @@ The parking escape kata description is (https://www.codewars.com/kata/591eab1d19
  - ✅ move to the RIGHT 
  - ✅ move multiple steps
 
+---
+# US2 - 2 floors parking lot
+## Scenario 1 - E2E: park on floor #1 with stairs on the Right
+**Given** "[[0,0,2,0,0,1],[0,0,0,0,0,0]]" as input\
+**When** I ask to find the stairs for the shortest path to the exit\
+**Then** I received "[R3,D1]"
+## Scenario 2 - E2E: park on floor #1 with stairs near to me on the Right
+**Given** "[[0,0,2,1,0,0],[0,0,0,0,0,0]]" as input\
+**When** I ask to find the stairs for the shortest path to the exit\
+**Then** I received "[R1,D1,R2]"
+## Scenario 3 - E2E: park on floor #1 with stairs on the Left
+**Given** "[[1,0,2,0,0,0],[0,0,0,0,0,0]]" as input\
+**When** I ask to find the stairs for the shortest path to the exit\
+**Then** I received "[L2,D1,R5]"
+## Scenario 4 - E2E: park on floor #0
+**Given** "[[1,0,0,0,0,0],[0,2,0,0,0,0]]" as input\
+**When** I ask to find the stairs for the shortest path to the exit\
+**Then** I received "R4"
+
+
+## Unit tests behavioral flow
+1. Am I in a multifloor parking lot?
+ - multi array input [[...],[...]]
+ - above ground floor there must be a stair [1]
+ - reject empty floors input
+2. where is my car?
+ - new tupla (floor + spot ✅)
+3. where is the stair on this floor?
+ - Stairs on the right
+ - stairs on the Left
+ - stairs in the middle of the floor (L || R)
+4. move to the exit
+ - move to the RIGHT ✅
+ - move to the LEFT
+ - move DOWN
