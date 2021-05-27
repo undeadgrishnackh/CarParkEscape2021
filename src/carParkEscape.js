@@ -1,13 +1,14 @@
 const MOVE_RIGHT = 'R';
 const MY_CAR = '🚘';
 const isntAnArray = (building) => !Array.isArray(building);
+const isntMultiArray = (floor) => !Array.isArray(floor);
+const isntProperParkingBuilding = (building) =>
+  isntAnArray(building) || isntMultiArray(building[0]);
 const isEmpty = (building) => building.length === 0;
 const isMyCarParkedOnSomeFloor = (floor) => floor.some((parking) => parking === MY_CAR);
 const myCarIsntThere = (building) => !building.some(isMyCarParkedOnSomeFloor);
-
 const isInvalidParking = (building) =>
-  isntAnArray(building) || isEmpty(building) || myCarIsntThere(building);
-
+  isntProperParkingBuilding(building) || isEmpty(building) || myCarIsntThere(building);
 const inWhichParkingSlotIsMyCar = (building) => building[0].indexOf(MY_CAR) + 1;
 
 const moveToTheExit = (building) => {

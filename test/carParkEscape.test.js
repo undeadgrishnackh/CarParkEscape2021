@@ -14,9 +14,13 @@ describe('US#1 - Flat Car Park', () => {
         const emptyArray = [];
         expect(carParkEscape(emptyArray)).toBe('ERROR');
       });
+      test('should return ERROR for a parking into a single array building [🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ]', () => {
+        const singleArray = [0, 0, 0, 0, 0, 0];
+        expect(carParkEscape(singleArray)).toBe('ERROR');
+      });
       test('should return ERROR for an empty array [[]]', () => {
-        const emptyArray = [[]];
-        expect(carParkEscape(emptyArray)).toBe('ERROR');
+        const emptyMultiArray = [[]];
+        expect(carParkEscape(emptyMultiArray)).toBe('ERROR');
       });
       test("should return ERROR if my car isn't parked inside", () => {
         const haventParkedInside = [[0, 0, 0, 0, 0, 0]];
