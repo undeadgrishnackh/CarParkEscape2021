@@ -7,4 +7,9 @@ describe('Car Park Escape', () => {
       expect(carParkEscape(FlatParking)).toBe('R5');
     });
   });
+  describe('Am I in a parlking lot?', () => {
+    test("should retunr ERROR for 'invalid input'", () => {
+      expect(carParkEscape('invalid input')).toBe('ERROR');
+    });
+  });
 });
