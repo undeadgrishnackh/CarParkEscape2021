@@ -7,11 +7,11 @@ const myCarIsntThere = (building) => building.some(isntMyCarOnThisFloor);
 const isInvalidParking = (building) =>
   isntAnArray(building) || isEmpty(building) || myCarIsntThere(building);
 
-const inWhichParkingSlotIsMyCar = (building) => building.indexOf(MY_CAR) + 1;
+const inWhichParkingSlotIsMyCar = (building) => building[0].indexOf(MY_CAR) + 1;
 
 const moveToTheExit = (building) => {
   const direction = MOVE_RIGHT;
-  const parkingSize = building.length;
+  const parkingSize = building[0].length;
   const steps = parkingSize - inWhichParkingSlotIsMyCar(building);
   return direction.concat(steps);
 };
