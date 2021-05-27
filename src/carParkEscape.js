@@ -1,16 +1,20 @@
 const MOVE_RIGHT = 'R';
 const MY_CAR = '🚘';
-const isntAnArray = (building) => !Array.isArray(building);
-const isntMultiArray = (floor) => !Array.isArray(floor);
-const isntProperParkingBuilding = (building) =>
-  isntAnArray(building) || isntMultiArray(building[0]);
-const isEmpty = (building) => building.length === 0;
+
+const isntTheBuildingIntoAnArray = (building) => !Array.isArray(building);
+const isntTheGroundFloorIntoAnArray = (floor) => !Array.isArray(floor);
+const isAnEmptyParking = (building) => building.length === 0;
 const isMyCarParkedOnSomeFloor = (floor) => floor.some((parking) => parking === MY_CAR);
 const myCarIsntThere = (building) => !building.some(isMyCarParkedOnSomeFloor);
+const areStaircasesOnGroundFloor = (building) => building[building.length - 1].includes(1);
+const isntProperParkingBuilding = (building) =>
+  isntTheBuildingIntoAnArray(building) ||
+  isntTheGroundFloorIntoAnArray(building[0]) ||
+  areStaircasesOnGroundFloor(building);
 const isInvalidParking = (building) =>
-  isntProperParkingBuilding(building) || isEmpty(building) || myCarIsntThere(building);
-const inWhichParkingSlotIsMyCar = (building) => building[0].indexOf(MY_CAR) + 1;
+  isntProperParkingBuilding(building) || isAnEmptyParking(building) || myCarIsntThere(building);
 
+const inWhichParkingSlotIsMyCar = (building) => building[0].indexOf(MY_CAR) + 1;
 const moveToTheExit = (building) => {
   const direction = MOVE_RIGHT;
   const parkingSize = building[0].length;
