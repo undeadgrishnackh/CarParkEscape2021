@@ -1,4 +1,4 @@
-const carParkEscape = require('../src/carParkEscape.js');
+const { carParkEscape, inWhichParkingSlotIsMyCar } = require('../src/carParkEscape.js');
 
 describe('Car Park Escape', () => {
   describe('US1 - Given [2,0,0,0,0,0] as a Flat car park', () => {
@@ -23,11 +23,11 @@ describe('Car Park Escape', () => {
   describe('Where is my car?', () => {
     test('should return parking #1 for [2, 0, 0, 0, 0, 0]', () => {
       const parkedOnSlot1 = [2, 0, 0, 0, 0, 0];
-      expect(carParkEscape(parkedOnSlot1)).toBe(1);
+      expect(inWhichParkingSlotIsMyCar(parkedOnSlot1)).toBe(1);
     });
     test('should return parking #2 for [0, 0, 0, 0, 0, 2]', () => {
       const parkedOnSlot1 = [0, 0, 0, 0, 0, 2];
-      expect(carParkEscape(parkedOnSlot1)).toBe(6);
+      expect(inWhichParkingSlotIsMyCar(parkedOnSlot1)).toBe(6);
     });
   });
   describe('Move to the exit', () => {
