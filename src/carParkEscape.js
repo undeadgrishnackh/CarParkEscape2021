@@ -1,2 +1,5 @@
-class Dummy {}
-module.exports = Dummy;
+function carParkEscape(building) {
+  return undefined;
+}
+
+module.exports = carParkEscape;
