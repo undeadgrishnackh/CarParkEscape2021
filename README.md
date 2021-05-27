@@ -28,9 +28,9 @@ The parking escape kata description is (https://www.codewars.com/kata/591eab1d19
 
 ## Code Behaviors - Unit Tests (2' coding mini-loops):
 1. Am I in a parking lot?
- - Is an array
- - Is not an empty array
- - are cars parked in
+ - ✅ Is an array
+ - ✅ Is not an empty array
+ - ✅ are cars parked in
 
 2. Where is my car? 
  - find my car into the parking

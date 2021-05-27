@@ -20,4 +20,14 @@ describe('Car Park Escape', () => {
       expect(carParkEscape(haventParkedInside)).toBe('ERROR');
     });
   });
+  describe('Where is my car?', () => {
+    test('should return parking #1 for [2, 0, 0, 0, 0, 0]', () => {
+      const parkedOnSlot1 = [2, 0, 0, 0, 0, 0];
+      expect(carParkEscape(parkedOnSlot1)).toBe(1);
+    });
+    test('should return parking #2 for [0, 0, 0, 0, 0, 2]', () => {
+      const parkedOnSlot1 = [0, 0, 0, 0, 0, 2];
+      expect(carParkEscape(parkedOnSlot1)).toBe(6);
+    });
+  });
 });
