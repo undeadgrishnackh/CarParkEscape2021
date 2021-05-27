@@ -15,5 +15,9 @@ describe('Car Park Escape', () => {
       const emptyArray = [];
       expect(carParkEscape(emptyArray)).toBe('ERROR');
     });
+    test("should return ERROR if my car isn' parked inside", () => {
+      const haventParkedInside = [0, 0, 0, 0, 0, 0];
+      expect(carParkEscape(haventParkedInside)).toBe('ERROR');
+    });
   });
 });
