@@ -22,7 +22,7 @@ The parking escape kata description is (https://www.codewars.com/kata/591eab1d19
 > SO THAT I'll be able to escape it ASAP.
 
 ## UAT: ✅ 
->GIVEN [2,0,0,0,0,0] as input \
+>GIVEN 🚘 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ as input \
 >WHEN I request the shortest path to the exit \
 >THEN I receive "R5".
 
