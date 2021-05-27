@@ -4,8 +4,8 @@ const MY_CAR = '🚘';
 const isntTheBuildingIntoAnArray = (building) => !Array.isArray(building);
 const isntTheGroundFloorIntoAnArray = (floor) => !Array.isArray(floor);
 const isAnEmptyParking = (building) => building.length === 0;
-const isMyCarParkedOnSomeFloor = (floor) => floor.some((parking) => parking === MY_CAR);
-const myCarIsntThere = (building) => !building.some(isMyCarParkedOnSomeFloor);
+const isMyCarParkedOnThisFloor = (floor) => floor.some((parking) => parking === MY_CAR);
+const myCarIsntThere = (building) => !building.some(isMyCarParkedOnThisFloor);
 const areStaircasesOnGroundFloor = (building) => building[building.length - 1].includes(1);
 const arentStaircasesOnFirstFloor = (building) =>
   building.length > 1 ? !building[0].includes(1) : false;
@@ -17,10 +17,20 @@ const isntProperParkingBuilding = (building) =>
 const isInvalidParking = (building) =>
   isntProperParkingBuilding(building) || isAnEmptyParking(building) || myCarIsntThere(building);
 
+const inWhichFloorIsMyCar = (building) => {
+  const carFoundedAtFloor = {};
+  for (let rawFloorNumber = 0; rawFloorNumber < building.length; rawFloorNumber += 1) {
+    if (isMyCarParkedOnThisFloor(building[rawFloorNumber])) {
+      carFoundedAtFloor.floorNumber = building.length - 1 - rawFloorNumber;
+      carFoundedAtFloor.rawFloorNumber = rawFloorNumber;
+    }
+  }
+  return carFoundedAtFloor;
+};
 const inWhichParkingSlotIsMyCar = (building) => {
   const position = {};
-  position.slot = building[0].indexOf(MY_CAR) + 1;
-  position.floor = 0;
+  position.floor = inWhichFloorIsMyCar(building);
+  position.slot = building[position.floor.rawFloorNumber].indexOf(MY_CAR) + 1;
   return position;
 };
 const moveToTheExit = (building) => {

@@ -105,14 +105,23 @@ describe('US#2 - 2 floors Car Park', () => {
     });
   });
   describe('Where is my car? In which floor and parking slot have I parked? 🤔', () => {
-    test('should return floor 0, slot 1 for [[⬇️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ],[🚘 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ]]', () => {
+    test('should return floor 0, slot 2 for [[⬇️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ],[🚘 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ]]', () => {
       const parkedOnSlot1Floor0 = [
         [1, 0, 0, 0, 0, 0],
         [0, '🚘', 0, 0, 0, 0],
       ];
       const parkedOn = inWhichParkingSlotIsMyCar(parkedOnSlot1Floor0);
-      expect(parkedOn.floor).toBe(0);
-      expect(parkedOn.slot).toBe(1);
+      expect(parkedOn.floor.floorNumber).toBe(0);
+      expect(parkedOn.slot).toBe(2);
+    });
+    test('should return floor 1, slot 3 for [[⬇️ 🅿️ 🚘 🅿️ 🅿️ 🅿️ ],[ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ 🅿️ ]]', () => {
+      const parkedOnSlot1Floor0 = [
+        [1, 0, '🚘', 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+      ];
+      const parkedOn = inWhichParkingSlotIsMyCar(parkedOnSlot1Floor0);
+      expect(parkedOn.floor.floorNumber).toBe(1);
+      expect(parkedOn.slot).toBe(3);
     });
   });
 });
