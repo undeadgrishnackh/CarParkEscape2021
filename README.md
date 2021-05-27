@@ -16,12 +16,12 @@ The parking escape kata description is (https://www.codewars.com/kata/591eab1d19
 - US2: a 2 floors parking
 - US3: a multi-level parking
 
-# US1 - The flat grocery store parking
+# US1 - The flat grocery store parking ✅ 
 > AS a driver that parked in a grocery store parking \
 > I NEED to understand which is the path to the exit \
 > SO THAT I'll be able to escape it ASAP.
 
-## UAT:
+## UAT: ✅ 
 >GIVEN [2,0,0,0,0,0] as input \
 >WHEN I request the shortest path to the exit \
 >THEN I receive "R5".
@@ -36,6 +36,6 @@ The parking escape kata description is (https://www.codewars.com/kata/591eab1d19
  - ✅ find my car into the parking
 
 3. Move to the exit... 
- - move to the RIGHT 
- - move multiple steps
+ - ✅ move to the RIGHT 
+ - ✅ move multiple steps
 
