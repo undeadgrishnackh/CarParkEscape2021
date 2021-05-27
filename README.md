@@ -42,31 +42,39 @@ The parking escape kata description is (https://www.codewars.com/kata/591eab1d19
 
 ---
 # US2 - 2 floors parking lot
-## Scenario 1 - E2E: park on floor #1 with stairs on the Right
+## Scenario 1 - E2E: park on floor #0
+**Given** "[[1,0,0,0,0,0],[0,2,0,0,0,0]]" as input\
+**When** I ask to find the shortest path to the exit\
+**Then** I received "R4"
+### Unit tests behavioral flow
+1. Am I in a multifloor parking lot?
+ - ✅ multi array input [[...],[...]]
+ - ✅ above ground floor there must be a stair [1]
+ - ✅ reject empty floors input
+2. where is my car?
+ - ✅ new tupla (floor + spot ✅)
+ - ✅ ⚠️ because the building is passed as a reverse kinda underground parking, the tupla is floor, slot where floor is human oriented floor number and raw array index.
+## Scenario 2 - E2E: park on floor #1 with stairs on the Right
 **Given** "[[0,0,2,0,0,1],[0,0,0,0,0,0]]" as input\
 **When** I ask to find the stairs for the shortest path to the exit\
 **Then** I received "[R3,D1]"
-## Scenario 2 - E2E: park on floor #1 with stairs near to me on the Right
+### Unit tests behavioral flow
+3. where is the stair on this floor?
+ - Stairs on the right
+4. move to the exit
+ - move to the RIGHT ✅
+ - move DOWN
+## Scenario 3 - E2E: park on floor #1 with stairs near to me on the Right
 **Given** "[[0,0,2,1,0,0],[0,0,0,0,0,0]]" as input\
 **When** I ask to find the stairs for the shortest path to the exit\
 **Then** I received "[R1,D1,R2]"
-## Scenario 3 - E2E: park on floor #1 with stairs on the Left
+## Scenario 4 - E2E: park on floor #1 with stairs on the Left
 **Given** "[[1,0,2,0,0,0],[0,0,0,0,0,0]]" as input\
 **When** I ask to find the stairs for the shortest path to the exit\
 **Then** I received "[L2,D1,R5]"
-## Scenario 4 - E2E: park on floor #0
-**Given** "[[1,0,0,0,0,0],[0,2,0,0,0,0]]" as input\
-**When** I ask to find the stairs for the shortest path to the exit\
-**Then** I received "R4"
 
 
-## Unit tests behavioral flow
-1. Am I in a multifloor parking lot?
- - multi array input [[...],[...]]
- - above ground floor there must be a stair [1]
- - reject empty floors input
-2. where is my car?
- - new tupla (floor + spot ✅)
+### uncovered behaviors
 3. where is the stair on this floor?
  - Stairs on the right
  - stairs on the Left
