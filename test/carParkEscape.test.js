@@ -130,7 +130,7 @@ describe('US#2 - 2 floors Car Park', () => {
         [0, 0, '🚘', 0, 0, 1],
         [0, 0, 0, 0, 0, 0],
       ];
-      expect(carParkEscape(twoFloorParking)).toBe('[R3,D1]');
+      expect(carParkEscape(twoFloorParking)).toBe('R3,D1');
     });
   });
 });

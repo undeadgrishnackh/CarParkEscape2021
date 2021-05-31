@@ -35,9 +35,14 @@ const inWhichParkingSlotIsMyCar = (building) => {
 };
 const moveToTheExit = (building) => {
   const direction = MOVE_RIGHT;
-  const parkingSize = building[0].length;
-  const steps = parkingSize - inWhichParkingSlotIsMyCar(building).slot;
-  return direction.concat(steps);
+  const floorSize = building[0].length;
+  const whereIsMyCar = inWhichParkingSlotIsMyCar(building);
+  const steps = floorSize - whereIsMyCar.slot;
+  const pathToTheExit = [direction.concat(steps)];
+  for (let floor = whereIsMyCar.floor.rawFloorNumber + 1; floor < building.length; floor += 1) {
+    pathToTheExit.push('D1');
+  }
+  return pathToTheExit.toString();
 };
 
 function carParkEscape(building) {
