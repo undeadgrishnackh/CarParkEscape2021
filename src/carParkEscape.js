@@ -1,15 +1,24 @@
-const isArray = (parkingLot) => Array.isArray(parkingLot);
+const isTheBuildingAnArray = (parkingLot) => Array.isArray(parkingLot);
+const isTheBuildingNotAnArray = (parkingLot) => !isTheBuildingAnArray(parkingLot);
+//! !TODO: FIX --> Not working test is red!
+const isTheBuildingEmpty = (parkingLot) => parkingLot.length === 0;
+const isTheBuildingWithAnEmptyGroundFloor = (parkingLot) =>
+  !Array.isArray(parkingLot[0]) || parkingLot[0].length === 0;
+const isInSomeFloorParkedMyCar = (floor) => floor.filter((val) => val === 2).length === 0;
+const isMyCarParkedOutsideTheBuilding = (building) => building.some(isInSomeFloorParkedMyCar);
 
-const hasCar = (parkingLot) => parkingLot.filter((val) => val === 2).length === 1;
-
-const rejectIncorrectParkingLot = (parkingLot) => {
-  if (!isArray(parkingLot) || !hasCar(parkingLot)) {
+const checkIfIsValidBuild = (parkingLot) => {
+  if (
+    isTheBuildingNotAnArray(parkingLot) ||
+    isTheBuildingEmpty(parkingLot) ||
+    isTheBuildingWithAnEmptyGroundFloor(parkingLot)
+  ) {
     throw Error('ERR');
   }
 };
 
-const rejectIncorrectMulitLevelParkingLot = (parkingLot) => {
-  if (!isArray(parkingLot) || !parkingLot.every((value) => isArray(value))) {
+const checkIfMyCarParkedOutsideTheBuilding = (parkingLot) => {
+  if (isMyCarParkedOutsideTheBuilding(parkingLot)) {
     throw Error('ERR');
   }
 };
@@ -20,15 +29,15 @@ class CarParkEscape {
     this.parkingLotSize = this.getParkingLotSize();
     this.right = 'R';
 
-    if (!isArray(parkingLot) || !parkingLot.some((value) => isArray(value))) {
-      rejectIncorrectParkingLot(parkingLot);
-    } else {
-      rejectIncorrectMulitLevelParkingLot(parkingLot);
-    }
+    checkIfIsValidBuild(parkingLot);
+    checkIfMyCarParkedOutsideTheBuilding(parkingLot);
   }
 
   carPosition() {
-    return this.parkingLot.indexOf(2);
+    return {
+      floor: 0,
+      spot: this.parkingLot[0].indexOf(2),
+    };
   }
 
   getExitDirection() {
@@ -36,11 +45,13 @@ class CarParkEscape {
   }
 
   getParkingLotSize() {
-    return this.parkingLot.length - 1;
+    //! ! TODO: the floor size isn't scaling to multifloor
+    return this.parkingLot[0].length - 1;
   }
 
   getStepsToExit() {
-    const stepsToExit = this.parkingLotSize - this.carPosition();
+    //! ! TODO: the exit can be find only in a flat parking
+    const stepsToExit = this.parkingLotSize - this.carPosition().spot;
     return stepsToExit.toString();
   }
 

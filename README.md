@@ -5,7 +5,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/undeadgrishnackh/CarParkEscape2021/badge.svg)](https://snyk.io/test/github/undeadgrishnackh/CarParkEscape2021/)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c8e046ebad254148950f6fea8f671594)](https://app.codacy.com/gh/undeadgrishnackh/CarParkEscape2021/dashboard)
 [![BCH compliance](https://bettercodehub.com/edge/badge/undeadgrishnackh/CarParkEscape2021?branch=master)](https://bettercodehub.com/)
-
+U
 🚧 CodeScene must be configured to scan the repository. Click the badge...
 [![CodeScene System Mastery](https://codescene.io/projects/7748/status-badges/system-mastery)](https://codescene.io/projects/7748)
 
@@ -56,6 +56,33 @@ THEN I receive "R5".
  . ✅ move to the RIGHT
  . ✅ move multiple steps
 
+ # User Stories Decomposition - 3' attempt
+ >>> user story creation with ATDD refinement
+>>> TDD/ATDD Double loops approach.
+## US 1 - the flat grocery store parking.
+AS a driver that parked in a grocery store parking
+I NEED to understand which is the path to the exit
+SO THAT I'll be able to escape it ASAP.
+
+### UAT 1: ✅
+GIVEN [[2,0,0,0,0,0]] as input
+WHEN I request the shortest path to the exit
+THEN I receive "R5".
+
+#### UnitTests (2' coding miniloops):
+1. Am I in a parking lot? 
+ - Is a Proper Parking lot
+  . ✅ Is an array?
+  . ✅ Is not empty array?
+ - Is my car in Parking lot?
+  . ✅ are cars parked in?
+2. Where is my car?
+ . ✅ find my car floor as 0
+ . ✅ find my car slot as 2 into the array (spot number)
+3. Move to the exit
+ . ✅ move to the RIGHT
+ . ✅ move multiple steps
+
 ### UAT 2: ✅
 GIVEN [0,2,0,0,0,0] as input
 WHEN I request the shortest path to the exit
@@ -77,12 +104,28 @@ THEN I receive "[R4]".
 
 #### unit test mini-loops:
 1. is a 2 floors parking?
- - reject everhing else than {0,1,2}
+ - ?: input is a multidimension array [[],[]]
+   - ? [[],[]] --> Rejcted
+   - Refactor US2 UAT4 guardian
+
+ - WIP: reject everhing else than {0,1,2}
  - after 1' floor must be a stairs case
- - input is a multidimension array [[],[]]
 2. in which floor is my car?
  - floor number
  - parking slot or spot ✅ in previous US but must change in a tupla (floor, spot)
+
+##### unit tests
+- ✅ Split guards into:
+  - Check building composition
+    - ✅ building is not an array
+    - ✅ building is empty = []
+    - ✅ building floor 0 is empty = [[]]
+  - Check buiding contents
+    - ✅ reject parking lot without car = [[0,0,0,0,0,0]]
+    - ✅ accept building where car parked on ground floor = [[2,0,0,0,0,0]]
+##### TECH DEBT
+- refactor US1 tests so that they pass with new 2D array
+- only checking ground floor is empty
 
 ### UAT 1: stairs on the extreme RIGHT side
 GIVEN [[0,0,2,0,0,1],[0,0,0,0,0,0]] as the parking lot
