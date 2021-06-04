@@ -52,7 +52,7 @@ UAT 2: ✅
  - TODO: US2 1 as the staircase
 - ✅ the result is a string ❌, or must be an ARRAY✔️
 
-Unit:
+Unit: 
 1. input as array
 2. empty slot === 0
 3. car === 2
