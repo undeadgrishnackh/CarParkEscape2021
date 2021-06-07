@@ -1,42 +1,38 @@
-/* class CarPark {
-  floors;
+const MOVE_TO_THE_RIGHT = 'R';
 
-  spot;
+const isAnArray = (parkingLot) => Array.isArray(parkingLot);
+const isntAnArray = (parkingLot) => !isAnArray(parkingLot);
+const isntAnArrayOfArrays = (parkingLot) => !parkingLot.every(isAnArray);
+const isAParkingWithoutSlots = (parkingLot) => parkingLot.length === 0;
+const isMyCarPresentInThisFloor = (parkingLot) => !(parkingLot.indexOf(2) === -1);
+const isMyCarPresentInTheBuilding = (parkingLot) => !parkingLot.some(isMyCarPresentInThisFloor);
+const isntAProperParkingLot = (parkingLot) =>
+  isntAnArray(parkingLot) ||
+  isntAnArrayOfArrays(parkingLot) ||
+  isAParkingWithoutSlots(parkingLot) ||
+  isMyCarPresentInTheBuilding(parkingLot);
 
-  exit;
-
-  constructor(spotToOccupy) {
-    this.floors = 1;
-    this.spot = spotToOccupy;
-    this.exit = 2;
-  }
-} */
-
-function isMyCarPresent(parkingLot) {
-  // for (let i = 0; i < parkingLot.length; i++) {
-  //   if (parkingLot[i] === 2) {
-  //     return true;
-  //   }
-  // }
-  if (parkingLot.indexOf(2) === -1) {
-    return false;
-  }
-  return true;
+// FIXME: TECHDEBT for the [[]] hardcoded top ground floor
+function whereIsMyCar(parkingLot) {
+  return parkingLot[0].indexOf(2);
 }
 
-function Carpark(parkingLot) {
-  const routeToExit = [];
-  if (!Array.isArray(parkingLot) || parkingLot.length === 0 || !isMyCarPresent(parkingLot)) {
+// FIXME: TECHDEBT for the [[]] hardcoded top ground floor
+const floorSize = (parkingLot) => parkingLot[0].length;
+const moveMultipleSteps = (parkingLot) => floorSize(parkingLot) - (whereIsMyCar(parkingLot) + 1);
+
+const moveToTheExit = (parkingLot) => {
+  const numberOfMovement = moveMultipleSteps(parkingLot);
+  return [`${MOVE_TO_THE_RIGHT}${numberOfMovement.toString()}`];
+};
+// -------
+
+function carParkEscape(parkingLot) {
+  if (isntAProperParkingLot(parkingLot)) {
     return 'error';
   }
-  function whereIsMyCar(parkingLot) {
-    return parkingLot.indexOf(2);
-  }
 
-  // return whereIsMyCar(parkingLot);
-  const numberOfMovement = parkingLot.length - (whereIsMyCar(parkingLot) + 1);
-  routeToExit[0] = `R${numberOfMovement.toString()}`;
-  return routeToExit;
+  return moveToTheExit(parkingLot);
 }
 
-module.exports = { Carpark };
+module.exports = { carParkEscape };

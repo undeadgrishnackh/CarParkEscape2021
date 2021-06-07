@@ -62,3 +62,16 @@
  - move to the LEFT
  - move DOWN
 
+
+
+---
+#### TODO LIST:
+1. TODO: FIX ✕ find my car in parking lot with 1 floor (3 ms)
+2. US1 should be improved as "read as a book" rule.
+3. ❓ why are so many tests in skip??
+4. double check that we are ready for US2....
+
+
+### TECH DEBT.
+- FIXME: bad way to test it.... expose the whereIsMyCar.
+- TODO: in US#2 is necessary to revamp the whereIsMyCar from spot# to a tupla (floor; spot#)
