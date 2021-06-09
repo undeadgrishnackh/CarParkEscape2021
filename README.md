@@ -76,6 +76,7 @@ Given a flat parking space
 when finding the exit
 then 
 
+
 ### US2 - As a driver i want to find the ideal route in a two floor parking space with the stairs on the right so that i can escape by only moving to the right and then down 1 floor
 
 -   Given two dimensional array (items representing the parking floor, with 5 slots on each floor
@@ -96,5 +97,18 @@ then
 
 
 ## TechDebt
+- ✅WARNING!! [] vs [[]]
 - Guardian should check the first item in the argument includes a car
 - Check whether it is a 5 slots length
+- 🤔 Element checker 0 || 1 || 2 is coupled with the other rules in the guardian.
+
+#### refactor
+- revamp the tests with:
+  - ✅ split guardin US1 UAT 1/2 👮 💂‍♀️
+  - ✅ GIVEN/WHEN/THEN update
+- 🚧 clean up the WIP Flat grocery issue building[0] with:
+  - an easy test scenario like [[0,0,0,0,0,0],[2,0,0,0,0,0]] --> R5
+- guardian floor 1 doesn't have the stairs
+
+
+NEXT LESSON: clean the WIP!
