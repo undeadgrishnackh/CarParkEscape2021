@@ -162,5 +162,16 @@ THEN I receive "[L2,D1,R5]".
  - move LEFT
 
 
-✅
+ 
+
+
+✅ Refactor
+1. ✅ Decouple the test cases
+2. 🚧 Separate the constructor funcionality to new method
+  - 🚧 Change failing testcases to work with newly created method
 🚧
+
+>> For the next lesson
+
+- double loop and refactor loop;
+- 

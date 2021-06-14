@@ -1,6 +1,6 @@
 const CarParkEscape = require('../src/carParkEscape.js');
 
-describe('US1 - Flat Gocrey store parking.', () => {
+describe.skip('US1 - Flat Gocrey store parking.', () => {
   describe('UAT 1 - Flat grocery store parking lot [[2,0,0,0,0,0]]', () => {
     describe('GIVEN the [[2,0,0,0,0,0]] parking lot', () => {
       describe('WHEN I request the shortest path to the exit', () => {
@@ -74,10 +74,11 @@ describe.skip('US2: 2-floors parking', () => {
     describe('GIVEN [[0,0,0,0,0,1],[0,2,0,0,0,0]] as the parking lot', () => {
       describe('WHEN I request the shortest path to the exit', () => {
         describe('[GUARD] 💂‍♀️ is a 2 floors parking?', () => {
+          //! ! FIXME: I'm bugged 🪲
           test('should throw an error if not a 2 dimensional array', () => {
             expect(() => new CarParkEscape([[2], 'blah'])).toThrow('ERR');
           });
-
+          //! ! FIXME: I'm a fake positive
           test('should throw an error if not a 2 dimensional array of arrays', () => {
             expect(() => new CarParkEscape(['blah', [2]])).toThrow('ERR');
           });
@@ -93,6 +94,50 @@ describe.skip('US2: 2-floors parking', () => {
           });
         });
       });
+    });
+  });
+});
+
+describe('Emerging architecture', () => {
+  describe('Create a parking lot building', () => {
+    test('I should have a parking lot building stored', () => {
+      const input = [[2, 0, 0, 0, 0, 0]];
+      const carParkEscape = new CarParkEscape(input);
+      expect(carParkEscape.building).toEqual(input);
+    });
+  });
+
+  describe('Check if is valid parking lot', () => {
+    test('a parking lot as a single array should be rejected', () => {
+      const input = [2, 0, 0, 0, 0, 0];
+      const carParkEscape = new CarParkEscape(input);
+      expect(() => carParkEscape.checkIfIsValidBuild()).toThrow('ERR');
+    });
+    test('should throw and error if the building is empty', () => {
+      const carParkEscape = new CarParkEscape();
+      expect(() => carParkEscape.checkIfIsValidBuild()).toThrow('ERR');
+    });
+    test('a parking lot as multiple arrays should be accepted', () => {
+      const input = [[2, 0, 0, 0, 0, 0]];
+      const carParkEscape = new CarParkEscape(input);
+      expect(() => carParkEscape.checkIfIsValidBuild()).not.toThrow('ERR');
+    });
+    test('should every floor in the building be an non empty array', () => {
+      const input = [[], [2]];
+      const carParkEscape = new CarParkEscape(input);
+      expect(() => carParkEscape.checkIfIsValidBuild()).toThrow('ERR');
+    });
+    test('should reject floor that is not representing an array', () => {
+      const input = ['blah', [2, 0, 0, 0, 0, 0]];
+      const carParkEscape = new CarParkEscape(input);
+      expect(() => carParkEscape.checkIfIsValidBuild()).toThrow('ERR');
+    });
+  });
+  describe('Check if there is a car in the parking lot', () => {
+    test('should throw an error if no car in the building', () => {
+      const input = [[0, 0, 0, 0, 0, 0]];
+      const carParkEscape = new CarParkEscape(input);
+      expect(() => carParkEscape.checkIfMyCarParkedOutsideTheBuilding()).toThrow('ERR');
     });
   });
 });
