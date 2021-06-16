@@ -99,8 +99,9 @@ then
 ## TechDebt
 - ✅WARNING!! [] vs [[]]
 - Guardian should check the first item in the argument includes a car
-- Check whether it is a 5 slots length
 - 🤔 Element checker 0 || 1 || 2 is coupled with the other rules in the guardian.
+- we should check that we have only one car in the building ?
+- cover WIP guardians with tests for multi-story buildings
 
 #### refactor
 - revamp the tests with:
@@ -109,6 +110,8 @@ then
 - 🚧 clean up the WIP Flat grocery issue building[0] with:
   - an easy test scenario like [[0,0,0,0,0,0],[2,0,0,0,0,0]] --> R5
 - guardian floor 1 doesn't have the stairs
+- refactor isMyCarParkedOutsideTheParking - to have a loop and index function
+- refactor whereIsMyCar - to have it less complex
 
 
 NEXT LESSON: clean the WIP!

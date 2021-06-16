@@ -1,4 +1,3 @@
-// US --> https://jsw.ibm.com/browse/EUA-3867
 const { carPark } = require('../src/carparkBABU.js');
 
 describe('GIVEN an invalid parking lot', () => {
@@ -44,6 +43,11 @@ describe('US#1 - The grocery store flat parking', () => {
 });
 
 describe('US#2 - The two-floors car parking', () => {
+  describe('Given an invalid 2 storey parking building when I ask for escape it', () => {
+    test('Then should return error', () => {
+      expect(carPark([[0], [0]])).toEqual('ERROR');
+    });
+  });
   // [[0,0,0,0,0,0],[2,0,0,0,0,0]] --> R5
   describe('GIVEN a two-floors parking lot [[0,0,0,0,0,0],[2,0,0,0,0,0]] WHEN I ask for escape it', () => {
     test('THEN should return ["R5"]', () => {
