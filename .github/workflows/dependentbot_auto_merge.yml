@@ -18,8 +18,9 @@ jobs:
             exit 0
           fi
       - name: Setup auto merge action
-        uses: ahmadnassri/action-dependabot-auto-merge@2.6.6
+        uses: ahmadnassri/action-dependabot-auto-merge@v2
         with:
+          target: minor, patch
           github-token: ${{ secrets.dependentbot }}
       - name: Delete branch after merge
         if: ${{ success() }}
