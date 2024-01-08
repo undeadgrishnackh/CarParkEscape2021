@@ -32,7 +32,7 @@
   "homepage": "https://github.com/undeadgrishnackh/CarParkEscape2021#readme",
   "dependencies": {},
   "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
+    "@commitlint/cli": "^18.4.4",
     "@commitlint/config-conventional": "^11.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^8.55.0",
